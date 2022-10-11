@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  frontend:
+    restart: always
+    image: frontend:latest 
+    ports:
+      - "80:80"
+    networks:
+      - NetworkCraftech
+  backend:
+    restart: always
+    image: backend:latest 
+    ports:
+      - "8000:8000"
+    networks:
+      - NetworkCraftech
+    environment:
+      - SECRET_KEY=secret
+
+networks:
+  NetworkCraftech:
+    driver: bridge
